@@ -1,4 +1,5 @@
 const graphql = require('graphql');
+const _ = require('lodash');
 
 const {
     GraphQLObjectType,
@@ -7,6 +8,11 @@ const {
     GraphQLSchema
 } = graphql;
 
+// Data for cities
+var cities = [
+    {name:'Lund', id: 1, description:"description 1"},
+    {name:'Växjö', id: 2, description:"description 2"}
+]
 const CityType = new GraphQLObjectType({
     name: 'City',
     fields: ()=>({
@@ -24,6 +30,7 @@ const RootQuery = new GraphQLObjectType({
             args:{ id: {type: GraphQLInt}},
             resolve(parent, args){
                 // code to get data from db
+                return _.find(cities, {id: args.id})
             }
         }
     }
