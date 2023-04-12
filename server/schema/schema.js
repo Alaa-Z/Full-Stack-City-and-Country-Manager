@@ -5,7 +5,8 @@ const {
     GraphQLObjectType,
     GraphQLID,
     GraphQLString,
-    GraphQLSchema
+    GraphQLSchema,
+    GraphQLList
 } = graphql;
 
 // Data for cities
@@ -47,6 +48,14 @@ const CountryType = new GraphQLObjectType({
             resolve(parent) {
                 return parent.population.toLocaleString();
             }
+        },
+        cities :{
+            type: new GraphQLList(CityType),
+            resolve(parent, args){
+                return _.filter(cities,{ countryId : parent.id} );
+            }
+
+
         }
     })
 })
