@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Alaa-Z/GraphQL-countries/issues"
   },
-  "homepage": "https://github.com/Alaa-Z/GraphQL-countries#readme"
+  "homepage": "https://github.com/Alaa-Z/GraphQL-countries#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
