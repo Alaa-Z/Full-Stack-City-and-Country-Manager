@@ -10,9 +10,9 @@ const {
 
 // Data for cities
 var cities = [
-    {name:'Lund', id: "1", description:"description 1"},
-    {name:'Växjö', id: "2", description:"description 2"},
-    {name:'New York', id: "3", description:"description 3"}
+    {name:'Lund', id: "1", description:"description 1", countryId : "1"},
+    {name:'Växjö', id: "2", description:"description 2", countryId : "1"},
+    {name:'New York', id: "3", description:"description 3", countryId : "2"}
 ]
 
 var countries = [
@@ -25,7 +25,15 @@ const CityType = new GraphQLObjectType({
     fields: ()=>({
         id: {type: GraphQLID},
         name:{type: GraphQLString},
-        description:{type: GraphQLString}
+        description:{type: GraphQLString},
+        country :{
+            type: CountryType,
+            resolve: (parent, args)=> {  
+                console.log((parent));
+                return _.find(countries, {id:parent.countryId})
+            }
+
+        }
     })
 })
 
