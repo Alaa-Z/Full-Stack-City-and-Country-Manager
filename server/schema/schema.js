@@ -3,20 +3,20 @@ const _ = require('lodash');
 
 const {
     GraphQLObjectType,
-    GraphQLInt,
+    GraphQLID,
     GraphQLString,
     GraphQLSchema
 } = graphql;
 
 // Data for cities
 var cities = [
-    {name:'Lund', id: 1, description:"description 1"},
-    {name:'Växjö', id: 2, description:"description 2"}
+    {name:'Lund', id: "1", description:"description 1"},
+    {name:'Växjö', id: "2", description:"description 2"}
 ]
 const CityType = new GraphQLObjectType({
     name: 'City',
     fields: ()=>({
-        id: {type: GraphQLInt},
+        id: {type: GraphQLID},
         name:{type: GraphQLString},
         description:{type: GraphQLString}
     })
@@ -27,7 +27,7 @@ const RootQuery = new GraphQLObjectType({
     fields: {
         city: {
             type: CityType,
-            args:{ id: {type: GraphQLInt}},
+            args:{ id: {type: GraphQLID}},
             resolve(parent, args){
                 // code to get data from db
                 return _.find(cities, {id: args.id})
