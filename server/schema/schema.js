@@ -78,6 +78,18 @@ const RootQuery = new GraphQLObjectType({
                 // code to get data from db
                 return _.find(countries, {id: args.id})
             }
+        },
+        countries: {
+            type: new GraphQLList(CountryType),
+            resolve(parent, args){
+                return countries;
+            }
+        },
+        cities: {
+            type: new GraphQLList(CityType),
+            resolve(parent, args){
+                return cities;
+            }
         }
     }
 });
