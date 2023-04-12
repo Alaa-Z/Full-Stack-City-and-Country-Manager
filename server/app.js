@@ -1,7 +1,13 @@
 const express = require("express");
+const {graphqlHTTP }= require("express-graphql");
 
 const app =  express();
 
-app.listen(400, ()=>{
+// Route Middleware
+app.use('/graphql',graphqlHTTP({
+
+}))
+
+app.listen(4000, ()=>{
     console.log("Server is running")
 })
