@@ -26,5 +26,21 @@ const addCityMutation = gql`
         }
     }
 `
-
-export{getCitiesQuery, getCountriesQuery, addCityMutation };
+const getCityQuery = gql`
+    query($id:ID){
+        city(id: $id){
+            id
+            name
+            description
+            country{
+                name
+                population
+                cities{
+                    name
+                    id
+                }
+            }
+        }
+    }
+`
+export{getCitiesQuery, getCountriesQuery, addCityMutation , getCityQuery };

@@ -25,7 +25,8 @@ const CityType = new GraphQLObjectType({
             resolve: (parent, args)=> {  
                 // console.log((parent));
                 // return _.find(countries, {id:parent.countryId})
-                return City.findById(parent.countryId)
+                return Country.findById(parent.countryId)         
+
             }
 
         }
