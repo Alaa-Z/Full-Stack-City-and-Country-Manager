@@ -10,7 +10,7 @@ const getCountriesQuery = gql`
 `
 const getCitiesQuery = gql`
 {
-    cities{
+    cities {
         name
         id
         description
@@ -18,4 +18,13 @@ const getCitiesQuery = gql`
 }
 `
 
-export{getCitiesQuery, getCountriesQuery };
+const addCityMutation = gql`
+     mutation($name: String!, $description: String!, $countryId: ID!) {
+        addCity(name: $name, description: $description, countryId: $countryId) {
+            name
+            id
+        }
+    }
+`
+
+export{getCitiesQuery, getCountriesQuery, addCityMutation };
