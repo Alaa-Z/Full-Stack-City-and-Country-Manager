@@ -6,7 +6,8 @@ const {
     GraphQLID,
     GraphQLString,
     GraphQLSchema,
-    GraphQLList
+    GraphQLList,
+    GraphQLNonNull
 } = graphql;
 
 const City = require('../models/city');
@@ -96,8 +97,8 @@ const Mutation = new GraphQLObjectType({
         addCountry: {
             type: CountryType,
             args: {
-                name: {type: GraphQLString},
-                population: {type: GraphQLString}
+                name: {type: new GraphQLNonNull(GraphQLString)},
+                population: {type: new GraphQLNonNull(GraphQLString)}
             },
             resolve(parent, args){
                 let country = new Country({
@@ -110,9 +111,9 @@ const Mutation = new GraphQLObjectType({
         addCity: {
             type: CityType,
             args: {
-                name: {type: GraphQLString},
-                description: {type: GraphQLString},
-                countryId: {type: GraphQLID}
+                name: {type: new GraphQLNonNull(GraphQLString)},
+                description: {type: new GraphQLNonNull(GraphQLString)},
+                countryId: {type: new GraphQLNonNull(GraphQLID)}
             },
             resolve(parent, args){
                 let city = new City({
