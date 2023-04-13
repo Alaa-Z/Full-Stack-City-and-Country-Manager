@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useQuery, useMutation} from '@apollo/client';
-import { getCountriesQuery, addCityMutation } from "../queries/queries";
+import { getCountriesQuery, addCityMutation, getCitiesQuery } from "../queries/queries";
 
 function AddCity() {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [countryId, setCountryId] = useState("");
 
-    const [addCity] = useMutation(addCityMutation);
+    const [addCity] = useMutation(addCityMutation, {
+        refetchQueries: [{ query: getCitiesQuery }]
+    });
 
     const { loading, error, data } = useQuery(getCountriesQuery);
     if (loading) return <p>Loading...</p>;
@@ -24,11 +26,12 @@ function AddCity() {
     const handleSubmit = (e) => {
         e.preventDefault();
         // console.log(name);
-        addCity({ variables: { name, description, countryId } });
+        addCity({ variables: { name, description, countryId } },
+            );
         setName("");
         setDescription("");
         setCountryId("");
-      };
+      }
 
     
     return (
