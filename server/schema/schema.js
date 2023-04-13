@@ -56,8 +56,6 @@ const CountryType = new GraphQLObjectType({
             resolve(parent, args){
                 return _.filter(cities,{ countryId : parent.id} );
             }
-
-
         }
     })
 })
@@ -111,6 +109,22 @@ const Mutation = new GraphQLObjectType({
                     population: args.population
                 });
                 return country.save();
+            }
+        },
+        addCity: {
+            type: CityType,
+            args: {
+                name: {type: GraphQLString},
+                description: {type: GraphQLString},
+                countryId: {type: GraphQLID}
+            },
+            resolve(parent, args){
+                let city = new City({
+                    name: args.name,
+                    description: args.description,
+                    countryId: args.countryId
+                });
+                return city.save();
             }
         }
     }
