@@ -1,14 +1,6 @@
 import React from "react";
 import {gql, useQuery} from '@apollo/client';
-
-const getCountriesQuery = gql`
-{
-    countries{
-        name
-        id
-    }
-}
-`
+import { getCountriesQuery } from "../queries/queries";
 
 function AddCity() {
     const { loading, error, data } = useQuery(getCountriesQuery);

@@ -1,15 +1,7 @@
 import React from "react";
 import {gql, useQuery} from '@apollo/client';
+import { getCitiesQuery } from "../queries/queries";
 
-const getCitiesQuery = gql`
-{
-    cities{
-        name
-        id
-        description
-    }
-}
-`
 
 function CityList() {
 
