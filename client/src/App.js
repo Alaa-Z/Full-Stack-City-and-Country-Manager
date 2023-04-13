@@ -1,5 +1,7 @@
 import React from "react";
 import CityList from "./components/CityList";
+import AddCity from "./components/AddCity";
+
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 // setup apollo client
@@ -14,6 +16,7 @@ function App() {
       <div>
         <h1>List</h1>
         <CityList />
+        <AddCity />
       </div>
     </ApolloProvider>
   );
