@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
-const schema =  mongoose.Schema;
+const Schema =  mongoose.Schema;
 
-const countrySchema = new schema({
+const countrySchema = new Schema({
     name: String, 
-    id: String,
-    population: String
+    population: String,
+    cities: [{
+        type: Schema.Types.ObjectId,
+        ref: 'City'
+    }]
 });
 
 module.exports = mongoose.model('Country', countrySchema)

@@ -11,17 +11,7 @@ const {
 
 const City = require('../models/city');
 const Country = require('../models/country');
-// Data for cities
-// var cities = [
-//     {name:'Lund', id: "1", description:"description 1", countryId : "1"},
-//     {name:'Växjö', id: "2", description:"description 2", countryId : "1"},
-//     {name:'New York', id: "3", description:"description 3", countryId : "2"}
-// ]
 
-// var countries = [
-//     {name: 'Sewden', id: "1", population: '10.42000000' },
-//     {name: 'USA', id: "2", population: '331.9000000' }
-// ]
 
 const CityType = new GraphQLObjectType({
     name: 'City',
@@ -33,7 +23,8 @@ const CityType = new GraphQLObjectType({
             type: CountryType,
             resolve: (parent, args)=> {  
                 // console.log((parent));
-                return _.find(countries, {id:parent.countryId})
+                // return _.find(countries, {id:parent.countryId})
+                return City.findById(parent.countryId)
             }
 
         }
@@ -54,7 +45,8 @@ const CountryType = new GraphQLObjectType({
         cities :{
             type: new GraphQLList(CityType),
             resolve(parent, args){
-                return _.filter(cities,{ countryId : parent.id} );
+                // return _.filter(cities,{ countryId : parent.id} );
+                return City.find({countryId : parent.id})
             }
         }
     })
@@ -68,7 +60,8 @@ const RootQuery = new GraphQLObjectType({
             args:{ id: {type: GraphQLID}},
             resolve(parent, args){
                 // code to get data from db
-                return _.find(cities, {id: args.id})
+                // return _.find(cities, {id: args.id})
+                return City.findById(args.id)
             }
         },
         country: {
@@ -76,19 +69,22 @@ const RootQuery = new GraphQLObjectType({
             args:{ id: {type: GraphQLID}},
             resolve(parent, args){
                 // code to get data from db
-                return _.find(countries, {id: args.id})
+                // return _.find(countries, {id: args.id})
+                return Country.findById(args.id)
             }
         },
         countries: {
             type: new GraphQLList(CountryType),
             resolve(parent, args){
-                return countries;
+                // return countries;
+                return Country.find({})
             }
         },
         cities: {
             type: new GraphQLList(CityType),
             resolve(parent, args){
-                return cities;
+                // return cities;
+                return City.find({})
             }
         }
     }
