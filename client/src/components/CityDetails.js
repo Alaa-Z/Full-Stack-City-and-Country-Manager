@@ -13,15 +13,20 @@ function CityDetails({ cityId }) {
     console.log(data);
     if (!data.city) return null; 
 
-    const { name, description, country } = data.city;
+    const { name, description, country} = data.city;
 
     return (
         <div id="city-details" >
         <h2>{name}</h2>
         <p>{description}</p>
         <p>
-          Country: {country.name} ({country.population})
+          Country: {country.name} {country.population}
         </p>
+        <ul> 
+            {country.cities.map(city=>{
+                return <li> {city.name}</li>
+            })}
+        </ul>
       </div>
     );
   }
