@@ -2,7 +2,7 @@ import React from "react";
 import CityList from "./components/CityList";
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
-// setup appolo client
+// setup apollo client
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
   cache: new InMemoryCache()
