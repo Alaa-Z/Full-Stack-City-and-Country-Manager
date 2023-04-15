@@ -1,7 +1,78 @@
+
+*{
+  box-sizing: border-box;
+  padding: 0px;
+}
 body {
   background-color: #eee;
   font-family: Arial, Helvetica, sans-serif;
   font-family: 1.1em;
 }
+#main h1{
+  color: #444;
+  text-align: center;
+}
+ #main{
+  height: 100%;
+  width: 70%;
+}
+#city-list li{
+  display: inline-block;
+  border-radius: 6px;
+  border: 1px solid #880e3f;
+  margin: 12px;
+  padding: 12px;
+  cursor: pointer;
+  color: #880e3f;
+}
+
+
+form{
+  background-color: #fff;
+  padding: 22px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 400px;
+
+}
+form .field{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap:10px;
+}
+form label{
+  text-align: right;
+  padding: 10px;
+}
+form select, form input{
+  margin: 6px;
+  padding: 6px;
+}
+form button{
+  color: wheat;
+  font-size: 1em;
+  background-color: #ad1457;
+  border: 0;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+}
+#city-details{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background-color: #ad1457;
+  padding: 33px;
+  overflow: auto;
+  color: white;
+}
+
+
 
 

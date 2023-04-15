@@ -20,8 +20,10 @@ function CityDetails({ cityId }) {
         <h2>{name}</h2>
         <p>{description}</p>
         <p>
-          Country: {country.name} {country.population}
+          Country: {country.name} 
         </p>
+        <p>Population of {country.name} is  {country.population}   </p>
+        <p> Cities in {country.name} </p>
         <ul> 
             {country.cities.map(city=>{
                 return <li> {city.name}</li>
