@@ -26,6 +26,14 @@ const addCityMutation = gql`
         }
     }
 `
+const addCountryMutation = gql`
+     mutation($name: String!, $population: String!) {
+        addCountry(name: $name, population: $population) {
+            name
+            id
+        }
+    }
+`
 const getCityQuery = gql`
     query($id:ID){
         city(id: $id){
@@ -43,4 +51,4 @@ const getCityQuery = gql`
         }
     }
 `
-export{getCitiesQuery, getCountriesQuery, addCityMutation , getCityQuery };
+export{getCitiesQuery, getCountriesQuery, addCityMutation , getCityQuery, addCountryMutation };

@@ -27,7 +27,7 @@ body {
 }
 
 
-form{
+#add-city{
   background-color: #fff;
   padding: 22px;
   position: fixed;
@@ -71,6 +71,14 @@ form button{
   padding: 33px;
   overflow: auto;
   color: white;
+}
+#add-country{
+  background-color: #fff;
+  padding: 22px;
+  position: fixed;
+  left: 0;
+  bottom: 200px;
+  width: 400px;
 }
 
 

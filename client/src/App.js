@@ -1,8 +1,8 @@
 import React from "react";
 import CityList from "./components/CityList";
 import AddCity from "./components/AddCity";
-
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import AddCountry from "./components/AddCountry";
 
 // setup apollo client
 const client = new ApolloClient({
@@ -17,6 +17,7 @@ function App() {
         <h1>List</h1>
         <CityList />
         <AddCity />
+        <AddCountry/>
       </div>
     </ApolloProvider>
   );
